@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded',function(){
       super(game); // super accesses a call function on a parent so it takes all the code from Enemy constructor
       this.x = this.game.width;
       this.y = Math.random() * this.game.height;
-      this.width = 100;
+      this.width = 200;
       this.height = 100;
       this.image = worm;
 
@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded',function(){
     lastTime = timeStamp;
     game.update(deltaTime);
     game.draw();
-    // some code
     requestAnimationFrame(animate);
   };
   animate(0);
