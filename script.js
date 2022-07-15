@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded',function(){
   class Enemy {
     constructor(game){
       this.game = game;
-      console.log(this.game);
+      // console.log(this.game);
       this.markedForDeletion = false;
     }
     update(){
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     }
     draw(ctx){
-      ctx.fillRect(this.x, this.y, this.width, this.height);
+      ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
 
     }
   }
@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded',function(){
       this.width = 200;
       this.height = 100;
       this.image = worm;
-
     }
   }
 
