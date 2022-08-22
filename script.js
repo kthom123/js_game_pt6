@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded',function(){
       this.width = width;
       this.height = height;
       this.enemies = [];
-      this.enemyInterval = 100;
+      this.enemyInterval = 500;
       this.enemyTimer = 0;
-      this.enemyTypes = ['worm', 'ghost'];
+      this.enemyTypes = ['worm', 'ghost', 'spider'];
     }
     update(deltaTime){
       this.enemies = this.enemies.filter(object => !object.markedForDeletion);
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded',function(){
       const randomEnemy = this.enemyTypes[Math.floor(Math.random() * this.enemyTypes.length)];
       if (randomEnemy == 'worm') this.enemies.push(new Worm(this));
       else if (randomEnemy == 'ghost') this.enemies.push(new Ghost(this));
+      else if (randomEnemy == 'spider') this.enemies.push(new Spider(this));
       // this.enemies.sort(function(a,b){
       //   return a.y - b.y;
       // });
@@ -80,10 +81,11 @@ document.addEventListener('DOMContentLoaded',function(){
       this.image = ghost;
       this.vx = Math.random() * 0.2 + 0.1;
       this.angle = 0;
+      this.curve = Math.random() * 3;
     }
     update(deltaTime){
       super.update(deltaTime);
-      this.y += Math.sin(this.angle) * 1;
+      this.y += Math.sin(this.angle) * this.curve;
       this.angle += 0.04;
     }
     draw(){
@@ -92,6 +94,26 @@ document.addEventListener('DOMContentLoaded',function(){
       super.draw(ctx);
       ctx.restore();
     }
+  }
+
+  class Spider extends Enemy{
+    constructor(game){
+      super(game); // super accesses a call function on a parent so it takes all the code from Enemy constructor
+      this.spriteWidth = 310;
+      this.spriteHeight = 175;
+      this.width = this.spriteWidth/2;
+      this.height = this.spriteHeight/2;
+      this.x = this.game.width;
+      this.y = 0 - this.height;
+      this.image = spider;
+      this.vx = 0;
+      this.vy = 1;
+    }
+    update(deltaTime){
+      super.update(deltaTime);
+      this.y
+    }
+
   }
 
   const game = new Game(ctx, canvas.width, canvas.height);
