@@ -9,4 +9,4 @@ Shows different enemies and their varying movements. 3 enemies appear (worm, gho
 
 
 ### Check it out:
-
+https://kthom123.github.io/js_game_pt6/
