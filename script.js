@@ -103,15 +103,17 @@ document.addEventListener('DOMContentLoaded',function(){
       this.spriteHeight = 175;
       this.width = this.spriteWidth/2;
       this.height = this.spriteHeight/2;
-      this.x = this.game.width;
+      this.x = Math.random() * this.game.width;
       this.y = 0 - this.height;
       this.image = spider;
       this.vx = 0;
-      this.vy = 1;
+      this.vy = Math.random() * 0.1 + 0.1;
+      this.maxLength = Math.random() * this.game.height;
     }
     update(deltaTime){
       super.update(deltaTime);
-      this.y
+      this.y += this.vy * deltaTime;
+      if (this.y > this.maxLength) this.vy *= -1;
     }
 
   }
