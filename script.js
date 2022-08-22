@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded',function(){
       this.markedForDeletion = false;
     }
     update(deltaTime){
-      this.x-=this.vx * deltaTime;
+      this.x -= this.vx * deltaTime;
       if (this.x < 0 - this.width) this.markedForDeletion = true;
 
     }
@@ -79,10 +79,16 @@ document.addEventListener('DOMContentLoaded',function(){
       this.y = Math.random() * this.game.height * 0.6;
       this.image = ghost;
       this.vx = Math.random() * 0.2 + 0.1;
+      this.angle = 0;
+    }
+    update(deltaTime){
+      super.update(deltaTime);
+      this.y += Math.sin(this.angle) * 1;
+      this.angle += 0.04;
     }
     draw(){
       ctx.save();
-      ctx.globalAlpha = 0.5;
+      ctx.globalAlpha = 0.7;
       super.draw(ctx);
       ctx.restore();
     }
