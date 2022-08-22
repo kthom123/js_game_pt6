@@ -29,8 +29,9 @@ document.addEventListener('DOMContentLoaded',function(){
       this.enemies.forEach(object => object.draw(this.ctx));
     }
     #addNewEnemy(){
-      const randomEnemy = this.enemyTypes[Math.random() * this.enemyTypes.length];
-      this.enemies.push(new Worm(this));
+      const randomEnemy = this.enemyTypes[Math.floor(Math.random() * this.enemyTypes.length)];
+      if (randomEnemy == 'worm') this.enemies.push(new Worm(this));
+      else if (randomEnemy == 'ghost') this.enemies.push(new Ghost(this));
       this.enemies.sort(function(a,b){
         return a.y - b.y;
       })
